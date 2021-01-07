@@ -9,6 +9,7 @@
   http://www.bluez.org/
 """
 
+from os import truncate
 import dbus
 import dbus.service
 import dbus.mainloop.glib
@@ -25,7 +26,10 @@ device_obj = None
 dev_path = None
 
 
-def ask(prompt):
+def ask(prompt, auto=False):
+    if auto:
+        print("Auto-confirming")
+        return "yes"
     try:
         return raw_input(prompt)
     except:
@@ -63,7 +67,7 @@ class Agent(dbus.service.Object):
     @dbus.service.method(AGENT_INTERFACE, in_signature="os", out_signature="")
     def AuthorizeService(self, device, uuid):
         print("AuthorizeService ({}, {})".format(device, uuid))
-        authorize = ask("Authorize connection (yes/no): ")
+        authorize = ask("Authorize connection (yes/no): ", True)
         if (authorize == "yes"):
             return
         raise Rejected("Connection rejected by user")
@@ -93,7 +97,7 @@ class Agent(dbus.service.Object):
     @dbus.service.method(AGENT_INTERFACE, in_signature="ou", out_signature="")
     def RequestConfirmation(self, device, passkey):
         print("RequestConfirmation ({}, {:06d}".format(device, passkey))
-        confirm = ask("Confirm passkey (yes/no): ")
+        confirm = ask("Confirm passkey (yes/no): ", True)
         if (confirm == "yes"):
             set_trusted(device)
             return
@@ -102,7 +106,7 @@ class Agent(dbus.service.Object):
     @dbus.service.method(AGENT_INTERFACE, in_signature="o", out_signature="")
     def RequestAuthorization(self, device):
         print("RequestAuthorization ({})".format(device))
-        auth = ask("Authorize? (yes/no): ")
+        auth = ask("Authorize? (yes/no): ", True)
         if (auth == "yes"):
             return
         raise Rejected("Pairing rejected")
