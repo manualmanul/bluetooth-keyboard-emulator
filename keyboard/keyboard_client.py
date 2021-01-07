@@ -61,10 +61,11 @@ Please follow these instructions:
 1. Set device language to English
 2. Set time to 24 hours
 3. Enable airplane mode w/ bluetooth
-4. Swipe to close the Shortcuts app and open it again
-4. Go to the automation screen
-5. Set up at least one automation
-6. Set up a shortcut with a name like "Every X minutes"
+4. Go to Accessibility > Keyboard > Full keyboard access > Enable
+5. Swipe to close the Shortcuts app and open it again
+6. Go to the automation screen
+7. Set up at least one automation
+8. Set up a shortcut with a name like "Every X minutes"
 
 """
 )
