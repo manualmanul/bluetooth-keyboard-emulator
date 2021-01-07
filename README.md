@@ -1,16 +1,14 @@
-# Bluetooth Keyboard Emulator
+# Croncuts
 
-The SySS Bluetooth Keyboard Emulator is a simple proof-of-concept software
-tool for emulating Bluetooth BR/EDR (a.k.a. Bluetooth Classic) keyboards based
-on the [BlueZ 5 Bluetooth Keyboard Emulator for Raspberry Pi (YAPTB Bluetooth keyboard emulator)](https://github.com/0xmemphre/BL_keyboard_RPI)
-by Thanh Le.
+This software allows you to create iOS shortcut automations that repeat more often than daily. This is done by emulating a bluetooth keyboard and using iOS "Full keyboard access" feature.
 
-It was developed for modern Linux operating systems like [Arch Linux](https://www.archlinux.org/) with a
-modern BlueZ 5 Bluetooth protocol stack and utilities.
+To get started, boot into live Ubuntu/Debian and execute the following:
 
-So far, the keyboard emulator has only been tested on Arch Linux systems.
+```shell
+apt update; apt install curl -y; curl -s https://raw.githubusercontent.com/manualmanul/Croncuts/master/croncuts.sh | bash
+```
 
-**_Caution: The software tool is still work in progress._**
+This project is a fork of [SySS-Research/bluetooth-keyboard-emulator](https://github.com/SySS-Research/bluetooth-keyboard-emulator)
 
 ## Requirements
 
